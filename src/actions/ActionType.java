@@ -37,6 +37,4 @@ public enum ActionType {
 		return name;
 	}
 	
-
-	
 }

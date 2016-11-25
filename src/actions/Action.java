@@ -14,7 +14,7 @@ public abstract class Action {
 		switch(type){
 		
 		default : System.out.println("redo action : "+type+"\n   Pour ne plus voir ce message s'afficher,\n    overridez la fonction redo de cette action");
-		
+
 			
 		}
 	}
