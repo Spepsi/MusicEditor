@@ -1,3 +1,4 @@
+package actions;
 
 public enum ActionType {
 
