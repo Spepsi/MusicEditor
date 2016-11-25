@@ -1,6 +1,8 @@
 package elements;
 
-public class Note {
+import actions.Action;
+
+public class Note implements Element{
 
 int duration; //1 whole , 2 half , etc ...
 boolean rest;// Rest or real note ?
@@ -11,7 +13,11 @@ int octave; // Octave value
 int velocity; // From ppp to fff 
 int style; // If legato staccato etc ...
 
-
+@Override
+public void draw() {
+	// TODO Auto-generated method stub
+	
+}
 
 
 }
