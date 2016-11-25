@@ -25,5 +25,10 @@ public class RythmSignature implements Element{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

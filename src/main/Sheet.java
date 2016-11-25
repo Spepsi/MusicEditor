@@ -14,8 +14,16 @@ public class Sheet implements Element{
 	private String title;
 	private String subtitle;
 	private String date;
+	int nbsteps = 96;// Smallest step possible (for representing starts ...) // Depends on the bar
 	
 	
+	public int getNbSteps(){
+		return nbsteps;
+	}
+	public void addBar(Bar b){
+		bars.addElement(b);
+		
+	}
 	public KeySignature getGlobalKeySignature() {
 		return globalKeySignature;
 	}
@@ -79,6 +87,14 @@ public class Sheet implements Element{
 	}
 	public void setDate(String date){
 		this.date = date;
+	}
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		for(Bar b : bars){
+			b.print();
+			System.out.println();
+		}
 	}
 	
 	

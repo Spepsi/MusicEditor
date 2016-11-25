@@ -16,6 +16,11 @@ public class KeySignature implements Element {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	
 	
