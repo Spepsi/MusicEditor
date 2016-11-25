@@ -1,27 +1,49 @@
 package gui;
 
-import java.util.Vector;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 import actions.Action;
+import actions.ActionType;
 
 public class MenuBar {
 	
 	public static JMenuBar getMenuBar(){
 		JMenuBar menuBar = new JMenuBar();
 		
+		ActionType[] actionFile = {ActionType.CreateNewSheet,
+									ActionType.OpenNewSheet,
+									ActionType.SaveCurrentSheet,
+									ActionType.ExitSoftware};
+		menuBar.add(createJMenu("File", actionFile));
+		ActionType[] actionEdition = {ActionType.CopyElement,
+										ActionType.PasteElement,
+										ActionType.Undo,
+										ActionType.Redo};
+		menuBar.add(createJMenu("Editing", actionEdition));
+		
 		return menuBar;
 	}
 	
-	public class Menu{
-		public String name;
-		public Vector<Action> actions;
-		
-		public Menu(String name, Vector<Action> actions){
-			this.name = name;
-			this.actions = actions;
+	private static JMenu createJMenu(String name, ActionType[] actions){
+		JMenu jMenu = new JMenu(name);
+		JMenuItem item;
+		for(ActionType type : actions){
+			item = new JMenuItem(type.getName());
+			item.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                Action.redoAction(type);
+	            }
+	        });
+			
+			jMenu.add(item);	
 		}
+		return jMenu;
 	}
 
 }

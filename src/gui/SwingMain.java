@@ -13,9 +13,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.border.EmptyBorder;
+import java.awt.BorderLayout;
 
 public class SwingMain extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8503157207806339141L;
 	private JPanel contentPane;
 
 	/**
@@ -45,39 +50,16 @@ public class SwingMain extends JFrame {
 		setContentPane(contentPane);
 
 		JMenuBar menuBar;
-		JMenu menu, submenu;
-		JMenuItem menuItem;
-		JRadioButtonMenuItem rbMenuItem;
-		JCheckBoxMenuItem cbMenuItem;
 
 		// Création de la bar de menu
-		menuBar = new JMenuBar();
-
-		// Création d'un menu
-		menu = new JMenu("A Menu");
-		menu.setMnemonic(KeyEvent.VK_A);
-		menu.getAccessibleContext().setAccessibleDescription(
-				"The only menu in this program that has menu items");
-		menuBar.add(menu);
-		menuItem = new JMenuItem("A text-only menu item",
-				KeyEvent.VK_T);
-		menuItem.getAccessibleContext().setAccessibleDescription(
-				"This doesn't really do anything");
-		menu.add(menuItem);
-
-		menuItem = new JMenuItem("Both text and icon");
-		menuItem.setMnemonic(KeyEvent.VK_B);
-		menu.add(menuItem);
-
-
-		contentPane.add(menuBar);
-
-
-
-		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		JLabel lblPhilippe = new JLabel("Philippe");
-		contentPane.add(lblPhilippe);
+		menuBar = MenuBar.getMenuBar();
+		setJMenuBar(menuBar);
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = ItemBarPanel.getItemBarPanel();
+		contentPane.add(panel, BorderLayout.NORTH);
+		
+		
 	}
 
 }
