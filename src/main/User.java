@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Vector;
+
 import elements.Bar;
 import elements.KeySignature;
 import elements.Note;
@@ -7,10 +9,18 @@ import elements.RythmSignature;
 
 public class User {
 
-	Sheet sheet = new Sheet();
+	Vector<Sheet> sheets;
+	int idCurrentSheet;
+	
+	public User(){
+		sheets = new Vector<Sheet>();
+		Sheet s = new Sheet();
+		idCurrentSheet = 0;
+		sheets.add(s);
+	}
 
-	public static void createTestSheet(){
-		Sheet s = Main.user.getSheet();
+	public void createTestSheet(){
+		Sheet s = getSheet();
 		// We fill the sheet
 		s.setGlobalKeySignature(new KeySignature(0,0));
 		s.setGlobalRythmSignature(new RythmSignature(4,4));
@@ -42,8 +52,28 @@ public class User {
 	int stepTolerance = 16 ; // By default step tolerance is sixteenth note (should be parametrizable)
 
 	public Sheet getSheet(){
-		return sheet;
+		return sheets.get(idCurrentSheet);
 	}
+
+	public void switch_sheet(int switch_to_sheet_id) {
+		this.idCurrentSheet = switch_to_sheet_id;
+	}
+
+	public Vector<Sheet> getSheets() {
+		return sheets;
+	}
+
+	public void createNewSheet(String title) {
+		sheets.add(new Sheet(title));
+	}
+
+	public void deleteSheet(int delete_sheet_id) {
+		if(delete_sheet_id<sheets.size()){
+			sheets.remove(delete_sheet_id);
+		}
+	}
+	
+	
 
 
 }

@@ -2,36 +2,39 @@ package actions;
 
 import javax.swing.ImageIcon;
 
-import ressources.Icones;
+import main.Main;
 
 public enum ActionType {
 
 	// Actions - File Menu
-	CreateNewSheet(Icones.newFile, "New File"),
-	SaveCurrentSheet(Icones.saveFile, "Save File"),
-	OpenNewSheet(Icones.openFile, "Open File"),
-	ExitSoftware(Icones.defaut, "Exit"), 
+	CreateNewSheet("new_file", "New File"),
+	SaveCurrentSheet("save_file", "Save File"),
+	OpenNewSheet("open_file", "Open File"),
+	ExitSoftware("exit", "Exit"), 
 	// Actions - Edition Menu
-	CopyElement(Icones.copy, "Copy"), 
-	PasteElement(Icones.paste, "Paste"), 
-	Undo(Icones.undo, "Undo"), 
-	Redo(Icones.redo, "Redo");
+	CopyElement("copy", "Copy"), 
+	PasteElement("paste", "Paste"), 
+	Undo("undo", "Undo"), 
+	Redo("redo", "Redo"),
+	// Actions Switch Name
+	SwitchSheet("", "Switch Sheet"),
+	DeleteSheet("", "Delete Sheet");
 	
-	private ActionType(Icones icone, String name){
-		this.icone = icone;
+	private ActionType(String iconname, String name){
+		this.icone = Main.icones.getIcone(iconname);
 		this.name = name;
 	}
 	private ActionType(){
 		this.name= this.name();
-		this.icone = Icones.defaut;
+		this.icone = Main.icones.getIcone("default");
 	}
 	
 	
-	Icones icone = null;	
+	ImageIcon icone = null;	
 	String name = null;
 	
 	public ImageIcon getIcone() {
-		return icone.image();
+		return icone;
 	}
 	public String getName() {
 		return name;
