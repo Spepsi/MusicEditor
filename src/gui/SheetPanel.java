@@ -27,8 +27,7 @@ public class SheetPanel extends JPanel {
 	float ratioStep = 0.02f;
 	Sheet s = Main.user.getSheet();
 	
-	Vector<Integer> currentSharps = new Vector<Integer>();
-	Vector<Integer> currentFlats = new Vector<Integer>();
+	
 	
 	
 
@@ -61,8 +60,7 @@ public class SheetPanel extends JPanel {
 					this.drawNote(g, n, b, 0);
 				}
 			}
-			this.currentFlats.clear();
-			this.currentSharps.clear();
+
 		}
 		
 		
@@ -87,10 +85,31 @@ public class SheetPanel extends JPanel {
 		float relativeHeightTail16 = 2.2f;
 		float relativeHeightTail32 = 1.9f;
 		// Draw accident
-		if(!b.getKeyNotes().contains(n.getPitch())){
+		if(n.getAccidental()==1){
+			
 			g2.drawString("#",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
 			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
 		}
+		if(n.getAccidental()==2){
+			
+			g2.drawString("x",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+		}
+		if(n.getAccidental()==-1){
+			
+			g2.drawString("b",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+		}
+		if(n.getAccidental()==-2){
+			
+			g2.drawString("bb",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+		}
+		if(n.getBecarre()){
+			g2.drawString("a",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+		}
+		// Becarre !
 		//Draw duration
 		switch(n.getDuration()){
 		case 2 : g2.setStroke(new BasicStroke(2));
@@ -132,7 +151,16 @@ public class SheetPanel extends JPanel {
 	}
 	
 	public float computeYNote(Note n, int numPortee){
-		float h = 5-0.5f*convertPitchToNote(n.getPitch())- (n.getOctave()-3)*3.5f;
+		int octave = n.getOctave();
+		if(n.getAccidental()==1 && n.getNote()==6){
+			
+			octave-=1;
+		}
+		if(n.getAccidental()==-1 && n.getNote()==0){
+			
+			octave+=1;
+		}
+		float h = 5-0.5f*(n.getNote())- (octave-3)*3.5f;
 		float f = (int)(getHeight()*(startY+h*spaceY));
 		return f;
 	}
@@ -143,37 +171,9 @@ public class SheetPanel extends JPanel {
 		return false;
 		
 	}
-	public int convertPitchToNote(int pitch){
-		switch(pitch){
-		case 0:
-			return 0;
-		case 1:
-			return 0;
-		case 2:
-			return 1;
-		case 3:
-			return 1;
-		case 4:
-			return 2;
-		case 5:
-			return 3;
-		case 6:
-			return 3;
-		case 7:
-			return 4;
-		case 8:
-			return 4;
-		case 9:
-			return 5;
-		case 10:
-			return 5;
-		case 11:
-			return 6;
-		default:
-			return 0;
-		}
+
 		
 		
-	}
-	
 }
+	
+

@@ -10,21 +10,45 @@ public class Bar implements Element {
 	KeySignature key;
 	RythmSignature rythm;
 	Vector<Note> notes= new Vector<Note>();
-	Vector<Integer> currentAccidentals= new Vector<Integer>();
-	
+	Vector<Note> currentAccidentals= new Vector<Note>();
+	Vector<Integer> accidents = new Vector<Integer>();
 	public Vector<Note> getNotes() {
 		return notes;
 	}
-	public Vector<Integer> getKeyNotes(){
-		return key.getNotes();
+
+	
+	public void calculateAccidentals(){
+		
+		for(Note n : notes){
+			// Get y origin (where to draw)
+			n.setNote(key.getAbsoluteRootTone(n));
+			// Check if accident has been taken into account
+			Vector<Note> toRemoveAccidentals = new Vector<Note>();
+			for(Note n1 : currentAccidentals){
+				if(n1.equal(n)){
+					System.out.println("return "+n.getPitch());
+					return;
+				}
+				// Then same root note and same octave..
+				if(key.getRootTone(n1)==key.getRootTone(n) && n1.getOctave()==n.getOctave()){
+					// Should we put a becarre ?
+					System.out.println("becarre "+n1.getPitch());
+					n.setBecarre(true);
+					n.setAccidental(0);
+					toRemoveAccidentals.addElement(n1);
+				}
+			}
+			// Then calculate accidentals if necessary !
+			int accidental = key.getRootAccidental(n);
+			n.setAccidental(accidental);
+			currentAccidentals.add(n);
+			
+			// Clear accidents buffer to remove
+			currentAccidentals.removeAll(toRemoveAccidentals);
+		}
 	}
 	
-	public boolean isSharp(Note n){
-		return !key.sharps().contains(n.getPitch());
-	}
-	public boolean isFlat(Note n){
-		return !key.flats().contains(n.getPitch());
-	}
+
 	
 	public void addNote(Note n){
 		// By default add note at the start of the sheet

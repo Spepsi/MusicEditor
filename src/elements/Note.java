@@ -37,6 +37,9 @@ private int octave; // Octave value
 private int velocity; // From ppp to fff 
 private int style; // If legato staccato etc ...
 
+private int accidental;
+private boolean becarre; // If we have to print a becarre
+private int note;// From 0 to 6
 
 public Note(int duration,boolean dot,int pitch,int octave,int velocity){
 	this.duration = duration;
@@ -47,6 +50,28 @@ public Note(int duration,boolean dot,int pitch,int octave,int velocity){
 	this.velocity = velocity;
 }
 
+public void setAccidental(int accident){
+	accidental = accident;
+}
+public int getAccidental(){
+	return accidental;
+}
+public void setNote(int note){
+	this.note = note;
+}
+public int getNote(){
+	return note;
+}
+
+
+public Note(Note n){
+	this.duration = n.duration;
+	this.rest = n.rest;
+	this.dot = n.dot;
+	this.pitch = n.pitch;
+	this.octave = n.octave;
+	this.velocity = n.velocity;
+}
 public int getDuration(){
 	return duration;
 }
@@ -64,6 +89,10 @@ public void setStartStep(int startStep){
 }
 
 
+public boolean equal(Note n){
+	return this.pitch==n.pitch && this.octave==n.octave;
+}
+
 @Override
 public void draw() {
 	// TODO Auto-generated method stub	
@@ -79,6 +108,14 @@ public void print() {
 public int getStartStep() {
 	// TODO Auto-generated method stub
 	return startStep;
+}
+
+public boolean getBecarre() {
+	return becarre;
+}
+
+public void setBecarre(boolean becarre) {
+	this.becarre = becarre;
 }
 
 

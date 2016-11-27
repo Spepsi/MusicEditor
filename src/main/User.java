@@ -1,4 +1,4 @@
-package main;
+package main ;
 
 import elements.Bar;
 import elements.KeySignature;
@@ -12,7 +12,7 @@ public class User {
 	public static void createTestSheet(){
 		Sheet s = Main.user.getSheet();
 		// We fill the sheet
-		s.setGlobalKeySignature(new KeySignature(0,0));
+		s.setGlobalKeySignature(new KeySignature(3,0));
 		s.setGlobalRythmSignature(new RythmSignature(4,4));
 
 		// Insert a bar
@@ -21,12 +21,12 @@ public class User {
 		Note n1 = new Note(4,false,0,3,50);
 		Note n2 = new Note(4,false,2,3,50);
 		Note n3 = new Note(4,false,4,3,50);
-		Note n4 = new Note(4,false,6,3,50);
-		Note n5 = new Note(4,false,0,4,50);
-		Note n6 = new Note(4,false,2,4,50);
-		Note n7 = new Note(4,false,8,4,50);
-		Note n8 = new Note(4,false,5,4,50);
-
+		
+		Note n4 = new Note(4,false,5,3,50);
+		Note n5 = new Note(4,false,7,3,50);
+		Note n6 = new Note(4,false,7,3,50);
+		Note n7 = new Note(4,false,11,3,50);
+		Note n8 = new Note(4,false,11,3,50);
 
 		b1.addNote(n1);
 		b1.addAfter(n1,n2);
@@ -36,6 +36,7 @@ public class User {
 		b1.addAfter(n5,n6);
 		b1.addAfter(n6,n7);
 		b1.addAfter(n7,n8);
+		b1.calculateAccidentals();
 		s.addBar(b1);
 	}
 
