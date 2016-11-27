@@ -25,7 +25,7 @@ public class User {
 		sheets.add(s);
 	}
 	
-	
+	// TODO IN GRAPHIC PART
 	public void switchMode(){
 		if(mode==Mode.INPUT){
 			mode = Mode.SELECTION;
@@ -44,6 +44,7 @@ public class User {
 		
 		b.calculateAccidentals();
 	}
+	// STOP TODO IN GRAPHIC MODE
 	
 	public void createTestSheet(){
 		Sheet s = getSheet();
