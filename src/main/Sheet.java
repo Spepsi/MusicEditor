@@ -16,6 +16,17 @@ public class Sheet implements Element{
 	private String date;
 	int nbsteps = 96;// Smallest step possible (for representing starts ...) // Depends on the bar
 	
+
+	public Sheet(){
+		this.title = "New Sheet";
+		this.subtitle = "";
+	}
+	
+	public Sheet(String title){
+		this.title = title;
+		this.subtitle = "";
+	}
+
 	public int getNbSteps(){
 		return nbsteps;
 	}

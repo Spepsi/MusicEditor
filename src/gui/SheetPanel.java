@@ -16,19 +16,19 @@ import main.Sheet;
 
 public class SheetPanel extends JPanel {
 	
-	public SheetPanel(){
-		
-	}
 
 	float startX = 0.05f, startY = 0.1f, spaceY = 0.03f;
 	float currentPos = 0.1f;
 	float startPos = currentPos, endPos;
 	float sizePerNote = 0.03f;
 	float ratioStep = 0.02f;
-	Sheet s = Main.user.getSheet();
+	Sheet s;
 	
 	
 	
+	public SheetPanel(Sheet s){
+		this.s = s;
+	}
 	
 
 	public void paintComponent(Graphics g){

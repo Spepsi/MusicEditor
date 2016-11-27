@@ -1,20 +1,24 @@
 package main;
 
-import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
-import gui.SheetPanel;
+import gui.SwingMain;
+import ressources.Icones;
+import ressources.Images;
 
 public class Main {
+	
 	public static User user = new User();
+	public static Icones icones = new Icones();
+	public static Images images = new Images();
+	public static SwingMain frame;
+	
 	public static void main(String[] args) {
-		User.createTestSheet();
+		user.createTestSheet();
 		try {
-			JFrame frame = new JFrame("Vaneau");
-			frame.setBounds(200, 200, 640, 480);
-			frame.setContentPane(new SheetPanel());
+			frame = new SwingMain();
 			frame.setVisible(true);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
