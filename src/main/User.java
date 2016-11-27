@@ -9,8 +9,14 @@ import elements.RythmSignature;
 
 public class User {
 
+	
 	Vector<Sheet> sheets;
 	int idCurrentSheet;
+	
+	
+	int rythmMode;
+	boolean dotted ;
+	Mode mode;
 	
 	public User(){
 		sheets = new Vector<Sheet>();
@@ -18,7 +24,27 @@ public class User {
 		idCurrentSheet = 0;
 		sheets.add(s);
 	}
-
+	
+	
+	public void switchMode(){
+		if(mode==Mode.INPUT){
+			mode = Mode.SELECTION;
+		}else{
+			mode =Mode.INPUT;
+		}
+	}
+	public void changeRythm(int rythm){
+		this.rythmMode = rythm;
+	}
+	public void changeDotted(int rythm){
+		this.dotted =!dotted;
+	}
+	public void inputNote(int diatonicNote,int octave,Bar b){
+		// Input a note after another !
+		
+		b.calculateAccidentals();
+	}
+	
 	public void createTestSheet(){
 		Sheet s = getSheet();
 		// We fill the sheet
