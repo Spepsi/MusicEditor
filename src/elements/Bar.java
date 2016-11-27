@@ -10,17 +10,26 @@ public class Bar implements Element {
 	KeySignature key;
 	RythmSignature rythm;
 	Vector<Note> notes= new Vector<Note>();
-
-	
+	Vector<Integer> currentAccidentals= new Vector<Integer>();
 	
 	public Vector<Note> getNotes() {
 		return notes;
 	}
+	public Vector<Integer> getKeyNotes(){
+		return key.getNotes();
+	}
+	
+	public boolean isSharp(Note n){
+		return !key.sharps().contains(n.getPitch());
+	}
+	public boolean isFlat(Note n){
+		return !key.flats().contains(n.getPitch());
+	}
+	
 	public void addNote(Note n){
 		// By default add note at the start of the sheet
 		notes.add(n);
 		// Add right step for note
-		
 	}
 	public void addNote(Note n,int startStep){
 		// By default add note at the start of the sheet
