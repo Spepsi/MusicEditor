@@ -23,6 +23,13 @@ public class KeySignature implements Element {
 		}
 		return false;
 	}
+	
+	public int diatonicToPitch(int diatonicPitch){
+		// Transform diatonic pitch in scale pitch
+		diatonicPitch = (diatonicPitch+nbSharps*3+nbFlats*4)%7;
+		return (startingNote+NOTES[diatonicPitch])%12;
+		
+	}
 	public KeySignature(int nbFlats, int nbSharps ){
 		this.nbFlats = nbFlats;
 		this.nbSharps = nbSharps;

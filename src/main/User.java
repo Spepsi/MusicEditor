@@ -16,6 +16,7 @@ public class User {
 	
 	int rythmMode;
 	boolean dotted ;
+	boolean rest;
 	Mode mode;
 	
 	public User(){
@@ -36,11 +37,25 @@ public class User {
 	public void changeRythm(int rythm){
 		this.rythmMode = rythm;
 	}
-	public void changeDotted(int rythm){
+	public void changeDotted(){
+		this.dotted =!dotted;
+	}
+	public void changeRest(){
 		this.dotted =!dotted;
 	}
 	public void inputNote(int diatonicNote,int octave,Bar b){
-		// Input a note after another !
+		// Input a note after the last one by default !
+		Note lastNote = b.getNotes().size()>0 ?b.getNotes().lastElement() : null;
+		Note newNote = new Note(this.rythmMode,this.dotted,diatonicNote,octave,50,b.getKeySignature());
+		if(lastNote!=null){
+			b.addAfter(lastNote,newNote);
+		}else{
+			b.addNote(newNote);
+		}
+		b.calculateAccidentals();
+	}
+	public void deleteNote(Note n,Bar b){
+		b.getNotes().remove(n);
 		
 		b.calculateAccidentals();
 	}

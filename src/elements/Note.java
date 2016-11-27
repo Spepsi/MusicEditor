@@ -52,6 +52,16 @@ public Note(int duration,boolean dot,int pitch,int octave,int velocity){
 	this.velocity = velocity;
 }
 
+
+public Note(int duration,boolean dot,int diatonicPitch, int octave,int velocity, KeySignature key){
+	this.duration = duration;
+	this.rest = false;
+	this.dot = dot;
+	this.pitch = key.diatonicToPitch(diatonicPitch);
+	this.octave = octave;
+	this.velocity = velocity;
+}
+
 public void setAccidental(int accident){
 	accidental = accident;
 }

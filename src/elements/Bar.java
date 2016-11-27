@@ -15,7 +15,10 @@ public class Bar implements Element {
 	public Vector<Note> getNotes() {
 		return notes;
 	}
-
+	
+	public KeySignature getKeySignature(){
+		return key;
+	}
 	
 	public void calculateAccidentals(){
 		
