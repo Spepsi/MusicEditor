@@ -1,4 +1,4 @@
-package main;
+package main ;
 import java.util.Vector;
 
 import actions.Action;
@@ -16,6 +16,7 @@ public class Sheet implements Element{
 	private String date;
 	int nbsteps = 96;// Smallest step possible (for representing starts ...) // Depends on the bar
 	
+
 	public Sheet(){
 		this.title = "New Sheet";
 		this.subtitle = "";
@@ -25,7 +26,7 @@ public class Sheet implements Element{
 		this.title = title;
 		this.subtitle = "";
 	}
-	
+
 	public int getNbSteps(){
 		return nbsteps;
 	}
@@ -47,21 +48,17 @@ public class Sheet implements Element{
 		return globalRythmSignature;
 	}
 
-
 	public void setGlobalRythmSignature(RythmSignature globalRythmSignature) {
 		this.globalRythmSignature = globalRythmSignature;
 	}
-
 
 	public Vector<Bar> getBars() {
 		return bars;
 	}
 
-
 	public void setBars(Vector<Bar> bars) {
 		this.bars = bars;
 	}
-
 
 	public String getTitle() {
 		return title;
@@ -77,10 +74,6 @@ public class Sheet implements Element{
 		return date;
 	}
 
-	
-	
-	
-	
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
