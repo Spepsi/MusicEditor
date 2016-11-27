@@ -28,6 +28,9 @@ public enum ActionType {
 	// Actions - Switch Input Mode
 	EnterInputMode("input_mode","Input Mode",1),
 	EnterSelectMode("select_mode","Select Mode",1),
+	// Actions - Switch Rest Mode
+	EnterRestMode("rest_true","Rest Mode",4),
+	EnterNonrestMode("rest_false","Non-rest Mode",4),
 	// Actions - Switch Dotted Mode
 	EnterDottedMode("dotted_true","Dotted Mode",3),
 	EnterNondottedMode("dotted_false","Non-dotted Mode",3);

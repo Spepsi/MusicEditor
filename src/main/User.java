@@ -14,6 +14,14 @@ public class User {
 	int idCurrentSheet;
 	
 	
+	public boolean isRest() {
+		return rest;
+	}
+
+	public void setRest(boolean rest) {
+		this.rest = rest;
+	}
+
 	private int rythmMode = 1;
 	int[] rythmModes = {1,2,4,8,16};
 	public int[] getRythmModes() {
@@ -22,6 +30,8 @@ public class User {
 
 	boolean dotted ;
 	Mode mode = Mode.INPUT;
+	Vector<Note> selection;
+	boolean rest;
 	
 	public User(){
 		sheets = new Vector<Sheet>();
@@ -34,6 +44,14 @@ public class User {
 	public void setMode(Mode mode){
 		this.mode = mode;
 	}
+	public void transpose(int change,Note n,Bar b){
+		n.transpose(change);
+		b.calculateAccidentals();
+	}
+	public void diatonicTranspose(int change,Note n,Bar b){
+		n.diatonicTranspose(change,b.getKeySignature());
+		b.calculateAccidentals();
+	}
 	public void changeRythm(int rythm){
 		this.setRythmMode(rythm);
 	}
@@ -43,8 +61,25 @@ public class User {
 	public boolean isDotted(){
 		return this.dotted;
 	}
+	public void changeRest(){
+		this.dotted =!dotted;
+	}
+	public void select(Vector<Note> n){
+		selection = n;
+	}
 	public void inputNote(int diatonicNote,int octave,Bar b){
-		// Input a note after another !
+		// Input a note after the last one by default !
+		Note lastNote = b.getNotes().size()>0 ?b.getNotes().lastElement() : null;
+		Note newNote = new Note(this.rythmMode,this.dotted,diatonicNote,octave,50,b.getKeySignature());
+		if(lastNote!=null){
+			b.addAfter(lastNote,newNote);
+		}else{
+			b.addNote(newNote);
+		}
+		b.calculateAccidentals();
+	}
+	public void deleteNote(Note n,Bar b){
+		b.getNotes().remove(n);
 		
 		b.calculateAccidentals();
 	}

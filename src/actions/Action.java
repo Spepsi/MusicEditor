@@ -35,6 +35,14 @@ public abstract class Action {
 			Main.user.setDotted(false);
 			SwingMain.getItemBarPanel().update();
 			break;
+		case EnterRestMode:
+			Main.user.setRest(true);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case EnterNonrestMode:
+			Main.user.setRest(false);
+			SwingMain.getItemBarPanel().update();
+			break;
 		case RythmMode1:
 			Main.user.setRythmMode(1);
 			SwingMain.getItemBarPanel().update();

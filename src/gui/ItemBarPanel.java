@@ -51,6 +51,11 @@ public class ItemBarPanel extends JToolBar{
 		items.add(ActionType.EnterDottedMode);
 		items.add(ActionType.EnterNondottedMode);
 		addItems(items);
+		// Adding Rest and Nonrest
+		items = new Vector<ActionType>();
+		items.add(ActionType.EnterRestMode);
+		items.add(ActionType.EnterNonrestMode);
+		addItems(items);
 		// Adding RythmMode
 		items = new Vector<ActionType>();
 		items.add(ActionType.RythmMode1);
@@ -115,6 +120,21 @@ public class ItemBarPanel extends JToolBar{
 			}
 			if(bouton.getToolTipText().equals(ActionType.EnterNondottedMode.getName())){
 				if(!Main.user.isDotted()){	
+					bouton.setBackground(Color.cyan);
+				} else {
+					bouton.setBackground(UIManager.getColor("control"));
+				}
+			}
+			// Rest Selection
+			if(bouton.getToolTipText().equals(ActionType.EnterRestMode.getName())){
+				if(Main.user.isRest()){	
+					bouton.setBackground(Color.cyan);
+				} else {
+					bouton.setBackground(UIManager.getColor("control"));
+				}
+			}
+			if(bouton.getToolTipText().equals(ActionType.EnterNonrestMode.getName())){
+				if(!Main.user.isRest()){	
 					bouton.setBackground(Color.cyan);
 				} else {
 					bouton.setBackground(UIManager.getColor("control"));
