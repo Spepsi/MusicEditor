@@ -85,29 +85,32 @@ public class SheetPanel extends JPanel {
 		float relativeHeightTail16 = 2.2f;
 		float relativeHeightTail32 = 1.9f;
 		// Draw accident
-		if(n.getAccidental()==1){
+		if(n.isPrintAccident()){
 			
-			g2.drawString("#",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
-			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
-		}
-		if(n.getAccidental()==2){
-			
-			g2.drawString("x",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
-			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
-		}
-		if(n.getAccidental()==-1){
-			
-			g2.drawString("b",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
-			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
-		}
-		if(n.getAccidental()==-2){
-			
-			g2.drawString("bb",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
-			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
-		}
-		if(n.getBecarre()){
-			g2.drawString("a",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
-			(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+			if(n.getAccidental()==1){
+				
+				g2.drawString("#",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+				(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+			}
+			if(n.getAccidental()==2){
+				
+				g2.drawString("x",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+				(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+			}
+			if(n.getAccidental()==-1){
+				
+				g2.drawString("b",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+				(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+			}
+			if(n.getAccidental()==-2){
+				
+				g2.drawString("bb",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+				(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+			}
+			if(n.getBecarre()){
+				g2.drawString("a",-10f*getWidth()/640f+getWidth()*startX+getWidth()*(1-2*startX)*currentPos, 
+				(int)(computeYNote(n, numPortee)+getHeight()*spaceY/2));
+			}
 		}
 		// Becarre !
 		//Draw duration

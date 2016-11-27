@@ -40,6 +40,8 @@ private int style; // If legato staccato etc ...
 private int accidental;
 private boolean becarre; // If we have to print a becarre
 private int note;// From 0 to 6
+private int octaveOffset;
+private boolean printAccident =true;
 
 public Note(int duration,boolean dot,int pitch,int octave,int velocity){
 	this.duration = duration;
@@ -116,6 +118,22 @@ public boolean getBecarre() {
 
 public void setBecarre(boolean becarre) {
 	this.becarre = becarre;
+}
+
+public int getOctaveOffset() {
+	return octaveOffset;
+}
+
+public void setOctaveOffset(int octaveOffset) {
+	this.octaveOffset = octaveOffset;
+}
+
+public boolean isPrintAccident() {
+	return printAccident;
+}
+
+public void setPrintAccident(boolean printAccident) {
+	this.printAccident = printAccident;
 }
 
 

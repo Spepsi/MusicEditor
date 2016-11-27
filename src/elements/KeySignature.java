@@ -12,8 +12,17 @@ public class KeySignature implements Element {
 	
 	int[] accidents ;
 	
-
+	public static int[] NOTES = {0,2,4,5,7,9,11};
 	
+	
+	public boolean isBecarre(Note n){
+		for(Integer i : NOTES){
+			if(i==n.getPitch()){
+				return true;
+			}
+		}
+		return false;
+	}
 	public KeySignature(int nbFlats, int nbSharps ){
 		this.nbFlats = nbFlats;
 		this.nbSharps = nbSharps;
