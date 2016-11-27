@@ -49,7 +49,7 @@ public class User {
 		this.dotted =!dotted;
 	}
 	public void changeRest(){
-		this.dotted =!dotted;
+		this.rest =!rest;
 	}
 	public void select(Vector<Note> n){
 		selection = n;
