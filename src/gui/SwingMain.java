@@ -15,6 +15,7 @@ public class SwingMain extends JFrame {
 	 */
 	private static final long serialVersionUID = 8503157207806339141L;
 	private JPanel contentPane;
+	private static ItemBarPanel itemBarPanel;
 	private static SheetNamesPanel sheetsPane;
 
 	
@@ -30,14 +31,17 @@ public class SwingMain extends JFrame {
 		// Création de la bar de menu
 		setJMenuBar(MenuBar.getMenuBar());
 		contentPane.setLayout(new BorderLayout(0, 0));
-
-		contentPane.add(new ItemBarPanel(contentPane), BorderLayout.NORTH);
+		itemBarPanel = new ItemBarPanel(contentPane);
+		contentPane.add(itemBarPanel, BorderLayout.NORTH);
 		sheetsPane = new SheetNamesPanel();
 		contentPane.add(sheetsPane, BorderLayout.CENTER);
 	}
 	
 	public static SheetNamesPanel getSheetsPane(){
 		return sheetsPane;
+	}
+	public static ItemBarPanel getItemBarPanel() {
+		return itemBarPanel;
 	}
 
 }

@@ -14,9 +14,14 @@ public class User {
 	int idCurrentSheet;
 	
 	
-	int rythmMode;
+	private int rythmMode = 1;
+	int[] rythmModes = {1,2,4,8,16};
+	public int[] getRythmModes() {
+		return rythmModes;
+	}
+
 	boolean dotted ;
-	Mode mode;
+	Mode mode = Mode.INPUT;
 	
 	public User(){
 		sheets = new Vector<Sheet>();
@@ -26,18 +31,17 @@ public class User {
 	}
 	
 	// TODO IN GRAPHIC PART
-	public void switchMode(){
-		if(mode==Mode.INPUT){
-			mode = Mode.SELECTION;
-		}else{
-			mode =Mode.INPUT;
-		}
+	public void setMode(Mode mode){
+		this.mode = mode;
 	}
 	public void changeRythm(int rythm){
-		this.rythmMode = rythm;
+		this.setRythmMode(rythm);
 	}
-	public void changeDotted(int rythm){
-		this.dotted =!dotted;
+	public void setDotted(boolean dotted){
+		this.dotted = dotted;
+	}
+	public boolean isDotted(){
+		return this.dotted;
 	}
 	public void inputNote(int diatonicNote,int octave,Bar b){
 		// Input a note after another !
@@ -99,6 +103,19 @@ public class User {
 		if(delete_sheet_id<sheets.size()){
 			sheets.remove(delete_sheet_id);
 		}
+	}
+
+	public int getRythmMode() {
+		return rythmMode;
+	}
+
+	public void setRythmMode(int rythmMode) {
+		this.rythmMode = rythmMode;
+	}
+
+	public Mode getMode() {
+		// TODO Auto-generated method stub
+		return mode;
 	}
 	
 	

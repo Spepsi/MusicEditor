@@ -3,6 +3,7 @@ package actions;
 import elements.Element;
 import gui.SwingMain;
 import main.Main;
+import main.Mode;
 
 public abstract class Action {
 	
@@ -18,6 +19,42 @@ public abstract class Action {
 	
 	public static void redoAction(ActionType type){
 		switch(type){
+		case EnterInputMode:
+			Main.user.setMode(Mode.INPUT);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case EnterSelectMode:
+			Main.user.setMode(Mode.SELECTION);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case EnterDottedMode:
+			Main.user.setDotted(true);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case EnterNondottedMode:
+			Main.user.setDotted(false);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case RythmMode1:
+			Main.user.setRythmMode(1);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case RythmMode2:
+			Main.user.setRythmMode(2);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case RythmMode4:
+			Main.user.setRythmMode(4);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case RythmMode8:
+			Main.user.setRythmMode(8);
+			SwingMain.getItemBarPanel().update();
+			break;
+		case RythmMode16:
+			Main.user.setRythmMode(16);
+			SwingMain.getItemBarPanel().update();
+			break;
 		case CreateNewSheet:
 			int i = ActionHelper.getNumberOfNewSheet();
 			if(i==0){
