@@ -34,6 +34,14 @@ public class User {
 			mode =Mode.INPUT;
 		}
 	}
+	public void transpose(int change,Note n,Bar b){
+		n.transpose(change);
+		b.calculateAccidentals();
+	}
+	public void diatonicTranspose(int change,Note n,Bar b){
+		n.diatonicTranspose(change,b.getKeySignature());
+		b.calculateAccidentals();
+	}
 	public void changeRythm(int rythm){
 		this.rythmMode = rythm;
 	}

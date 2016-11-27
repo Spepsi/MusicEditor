@@ -62,6 +62,36 @@ public Note(int duration,boolean dot,int diatonicPitch, int octave,int velocity,
 	this.velocity = velocity;
 }
 
+public void transpose(int change){
+	this.pitch += change;
+	if(this.pitch==12){
+		this.pitch=0;
+		this.octave++;
+	}else if(this.pitch==-1){
+		this.pitch = 11;
+		this.octave--;
+	}
+}
+
+public void diatonicTranspose(int change,KeySignature key){
+	// If it is not in key get the nearest toward change;
+	
+	this.pitch += change;
+
+	pitch += (KeySignature.NOTES[key.getRootTone(this)]-KeySignature.NOTES[(key.getRootTone(this)+change+7)%7]+12)%12;
+	
+	if(this.pitch==12){
+		this.pitch=0;
+		this.octave++;
+		
+	}else if(this.pitch==-1){
+		this.pitch = 11;
+		
+		this.octave--;
+	}
+	
+}
+
 public void setAccidental(int accident){
 	accidental = accident;
 }
