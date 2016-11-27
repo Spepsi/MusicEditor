@@ -62,7 +62,7 @@ public class User {
 		return this.dotted;
 	}
 	public void changeRest(){
-		this.dotted =!dotted;
+		this.rest =!rest;
 	}
 	public void select(Vector<Note> n){
 		selection = n;
@@ -70,7 +70,12 @@ public class User {
 	public void inputNote(int diatonicNote,int octave,Bar b){
 		// Input a note after the last one by default !
 		Note lastNote = b.getNotes().size()>0 ?b.getNotes().lastElement() : null;
-		Note newNote = new Note(this.rythmMode,this.dotted,diatonicNote,octave,50,b.getKeySignature());
+		Note newNote;
+		if(this.rest){
+			newNote = new Note(this.rythmMode,this.dotted,diatonicNote,octave,50,b.getKeySignature());
+		}else{
+			newNote = new Note(this.rythmMode,this.dotted);
+		}
 		if(lastNote!=null){
 			b.addAfter(lastNote,newNote);
 		}else{
