@@ -13,7 +13,7 @@ public class User {
 	Vector<Sheet> sheets;
 	int idCurrentSheet;
 	
-	
+	Vector<Note> selection;
 	int rythmMode;
 	boolean dotted ;
 	boolean rest;
@@ -42,6 +42,9 @@ public class User {
 	}
 	public void changeRest(){
 		this.dotted =!dotted;
+	}
+	public void select(Vector<Note> n){
+		selection = n;
 	}
 	public void inputNote(int diatonicNote,int octave,Bar b){
 		// Input a note after the last one by default !
