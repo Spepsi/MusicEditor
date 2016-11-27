@@ -13,6 +13,9 @@ public class Bar implements Element {
 
 	
 	
+	public Vector<Note> getNotes() {
+		return notes;
+	}
 	public void addNote(Note n){
 		// By default add note at the start of the sheet
 		notes.add(n);

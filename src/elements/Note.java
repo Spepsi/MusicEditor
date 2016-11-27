@@ -4,6 +4,30 @@ import actions.Action;
 
 public class Note implements Element{
 
+public boolean isRest() {
+		return rest;
+	}
+
+	public boolean isDot() {
+		return dot;
+	}
+
+	public int getPitch() {
+		return pitch;
+	}
+
+	public int getOctave() {
+		return octave;
+	}
+
+	public int getVelocity() {
+		return velocity;
+	}
+
+	public int getStyle() {
+		return style;
+	}
+
 private int duration; //1 whole , 2 half , etc ...
 private boolean rest;// Rest or real note ?
 private boolean dot; // If rythm is dotted or not
